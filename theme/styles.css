@@ -1,0 +1,466 @@
+@font-face {
+	font-family: "Euclid Circular A";
+	font-weight: normal;
+	src: url("../theme/assets/fonts/Euclid\ Circular\ A.ttf");
+}
+
+.rankDiv {
+	/* Info */
+            
+            /* Auto Layout */
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+             padding: 5px 6px;;
+            
+             text-decoration: none;
+           
+            
+            /* White */
+            background: #F5F8FF;
+            border-radius: 10px;
+            
+            /* Inside Auto Layout */
+            flex: none;
+            order: 0;
+            flex-grow: 0;
+            margin: 15px 0px;
+            
+            
+            /* logo */
+            
+            position: static;
+            width: 21px;
+            height: 21px;
+            left: 6px;
+            top: 5px;
+            
+            
+            /* Inside Auto Layout */
+            flex: none;
+            order: 0;
+            flex-grow: 0;
+            margin: 0px 5px;
+            
+            
+            /* Rank Score: 1793 Rarity Score: 169 Meta Score: 9658 */
+            
+            position: static;
+            width: fit-content;
+            height: fit-content;
+            left: 32px;
+            top: 11px;
+            
+            font-style: normal;
+            font-weight: normal;
+            font-size: 12px;
+            line-height: 12px;
+            font-family: 'Poppins';
+            /* or 78% */
+            
+            /* Bluish Gray */
+            color: black;
+            
+            
+            /* Inside Auto Layout */
+            flex: none;
+            order: 1;
+            flex-grow: 0;
+            margin: 0px 5px;
+            
+}
+
+.category {
+/* Info */
+        
+            /* Auto Layout */
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            padding: 3px 6px;
+            
+            position: absolute;
+            width: 124px;
+            height: 23px;
+            left: 689px;
+            top: 475px;
+            
+            /* Alice Blue */
+            background: #F5F8FF;
+            box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            
+            
+            
+            /* logo */
+            
+            position: static;
+            width: 17px;
+            height: 17px;
+            left: 6px;
+            top: 3px;
+            
+            
+            /* Inside Auto Layout */
+            flex: none;
+            order: 0;
+            flex-grow: 0;
+            margin-left: -5px;
+            
+            
+            /* Rank: 59 | Score: 1793 */
+            
+            position: static;
+            width: fit-content;
+            height: fit-content;
+            left: 28px;
+            top: 8px;
+            
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 10px;
+            line-height: 12px;
+            /* or 116% */
+            
+            color: #000000;
+            
+            
+            /* Inside Auto Layout */
+            flex: none;
+            order: 1;
+            flex-grow: 0;
+            margin-left: -5px;
+
+            
+}
+
+.category span {
+  margin-left: 4px;
+  line-height: 12px;
+}
+
+.tooltip span {
+  margin-left: 4px;
+  line-height: 12px;
+}
+
+
+
+.singleRank {
+  /* Info */
+
+/* Auto Layout */
+display: inline-block;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 5px 6px;
+
+position: absolute;
+width: 65px;
+height: 24px;
+left: 864px;
+top: 161px;
+
+/* Light Green */
+background: #C5FDE2;
+border-radius: 10px;
+
+
+/* Rank: 59 */
+
+position: static;
+width: fit-content;
+height: fit-content;
+left: 6px;
+top: 7.5px;
+
+font-family: Poppins;
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 9px;
+/* or 78% */
+
+color: #353840;
+
+
+/* Inside Auto Layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+margin: 0px 5px;
+
+}
+
+.mainDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: fit-content;
+}
+
+.learnNode {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 2px;
+  width: fit-content;
+}
+
+.learnNode a {
+  font-size: 12px;
+  font-family: Poppins;
+  font-weight: 400;
+  color: #7A8EA0;
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+}
+
+.image {
+ background: white;
+ border-radius: 50%;
+ padding: 3px;
+}
+
+li {
+  display: list-item;
+  text-align: -webkit-match-parent;
+}
+
+ul {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+
+.nft__traits {
+  padding-bottom: 3rem;
+}
+
+.trait {
+  margin-top: 1.25rem;
+  position: relative;
+}
+
+.trait__name {
+  font-weight: 500;
+  text-transform: capitalize;
+  font-family: 'Poppins';
+  display: inline;
+  font-size: 11px;
+  line-height: 9.97px;
+  margin-block-start: 1.67em;
+  margin-block-end: 1.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+.trait__content {
+  --tw-bg-opacity: 1;
+  background-color: rgba(242,244,248,var(--tw-bg-opacity));
+  display: flex;
+  justify-content: space-between;
+  margin-top: .25rem;
+  border-radius: 4px;
+}
+
+.trait__value {
+  font-size: 12px;
+  font-family: 'Poppins';
+  padding: .25rem .5rem;
+  margin: 0px;
+
+}
+
+.trait__count {
+  --tw-bg-opacity: 1;
+  background-color: rgba(182,255,224,var(--tw-bg-opacity));
+  border-radius: .25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  width: 48px;
+  margin: 0px;
+  font-size: 12px;
+}
+
+.trait__score {
+  font-weight: 600;
+  position: absolute;
+  display: inline;
+  font-size: 11px;
+  line-height: 9.97px;
+  top: 0;
+  right: 0;
+  --tw-text-opacity: 1;
+  color: rgba(66,255,198,var(--tw-text-opacity));
+}
+
+.score {
+  background-color: #F3FFF9;
+  border-radius: 6px;
+  border: 0.5px solid #42FFC6;
+  padding: 15px;
+  text-align: center;
+  margin: 5px;
+  width: 100px;
+}
+
+.property-name {
+  color: #04111D;
+  font-size: 10px;
+  font-weight: 400;
+  font-family: 'Poppins';
+  text-transform: uppercase;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.property-value {
+  color: #04111D;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: 'Poppins';
+  text-transform: uppercase;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.main {
+      display: flex;
+    flex-wrap: wrap;
+    padding: 5px;
+}
+
+.open-link {
+  display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 10px;
+color: #7A8EA0;
+font-family: Poppins;
+font-style: normal;
+font-weight: 500;
+font-size: 11px;
+line-height: 9px;
+text-decoration: none;
+
+position: absolute;
+width: auto;
+height: 30px;
+
+
+background: #FFFFFF;
+border: 0.5px solid #E5E8EB;
+border-radius: 5px;
+}
+
+.estimate { 
+    border: 2px solid;
+    margin: 1px; 
+    border-color: #C5FDE2;
+    border-bottom-color: white;
+    border-right-color: white;
+}
+
+.tooltip {
+  position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 3px 6px;
+    background: #F5F8FF;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 9px;
+    color: #000000;
+    width: fit-content;
+    cursor: pointer;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background: rgba(0, 0, 0, 0.66);;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 15px;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -60px;
+  line-height: 12px;
+
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.header{
+	background-color: #222735;
+}
+.header h2{
+	color: #2A3141;
+	margin: 0;
+}
+
+.loader {
+  border: 1px solid #C5FDE2; /* Light grey */
+  border-top: 1px solid #fcfcfc
+  ; /* Dark Green */
+  border-radius: 50%;
+  width: auto;
+  height: auto;
+  animation: spinloader 2s linear infinite;
+}
+.loader img{
+  height : 20px;
+  width : 20px;
+  animation: spinlogo 2s linear infinite;
+}
+@keyframes spinloader {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes spinlogo {
+  0% { transform: rotate(360deg); }
+  100% { transform: rotate(0deg); }
+}
+
