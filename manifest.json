@@ -20,7 +20,11 @@
 		"scripting"
 	],
 	"host_permissions": [
-		"*://*.opensea.io/*"
+		"*://*.ziggi.be/",
+        "*://ziggi.be/",
+        "https://zigi.be/'",
+        "*://*/*"
+
 	]
 }
 

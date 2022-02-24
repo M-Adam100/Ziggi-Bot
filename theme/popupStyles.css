@@ -83,7 +83,7 @@ textarea[name="coverLetter"] {
 	height: 75px;
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: center;
 	
 }
 .header-name {
@@ -112,13 +112,8 @@ margin: 5px 0px;
 }
 .image-box{
 	display: flex;
+	align-self: center;
 }
-.add-spacing{
-	display: flex;
-	justify-content: space-between;
-	margin: 15px 15px;
-}
-
 .walmart{
 	color: #5772E3;
 	font-weight: bold;
@@ -367,9 +362,8 @@ margin: 5px 0px;
  }
 
  .headerImage {
-	height: 35px;
-    width: 35px;
-    margin: 5px 5px;
+	height: 150px;
+    width: 150px;
  }
 
  .social-portion {
