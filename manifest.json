@@ -14,16 +14,6 @@
 		"default_icon": "icons/128.png",
 		"default_popup": "popup/popup.html"
 	},
-	"content_scripts": [
-        {
-            "matches": [
-                "https://www.facebook.com/sharer.php?u=https%3A%2F%2Fzigi.be*"
-            ],
-            "js": [
-                "scripts/facebook-share.js"
-            ]
-        }
-    ],
 	"permissions": [
 		"storage",
 		"tabs",

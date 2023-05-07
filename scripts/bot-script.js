@@ -8,13 +8,6 @@ console.log('Launching Bot')
   const sleep = (ms) => {
     return new Promise((resolve) => setTimeout(resolve, ms))
   }
-
-  const storeTabId = async () => {
-    chrome.runtime.sendMessage({
-      message: 'SAVE_TAB_ID',
-    })
-  }
-
   const setRerunVar = async (value) => {
     chrome.storage.local.set({
       value,
@@ -37,7 +30,6 @@ console.log('Launching Bot')
     ].filter((item) => !item.getAttribute('shared'))[0]
     if (post) {
       clearInterval(postInterval)
-      storeTabId()
       post.setAttribute('shared', 'true')
 
       if (CS.facebookStatus) {
