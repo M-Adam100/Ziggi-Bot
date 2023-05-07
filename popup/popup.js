@@ -15,6 +15,11 @@ document.querySelector('button#launch-bot').addEventListener('click', () => {
     });
 })
 
+document.getElementById("openOptions").addEventListener("click", () => {
+	chrome.runtime.openOptionsPage();
+
+})
+
 chrome.storage.local.get(['facebookStatus', 'twitterStatus', 'linkedInStatus', 'pinterestStatus', 'vkStatus'], (data) => {
   document.querySelector('input#facebook').checked = data?.facebookStatus;
   document.querySelector('input#twitter').checked = data?.twitterStatus;

@@ -1,6 +1,6 @@
 {
-	"name": "Ziggi Auto Share",
-	"version": "1.0.1",
+	"name": "Zigi Auto Share",
+	"version": "1.0.3",
 	"description": "",
 	"manifest_version": 3,
 	"incognito": "split",
@@ -14,12 +14,23 @@
 		"default_icon": "icons/128.png",
 		"default_popup": "popup/popup.html"
 	},
+	"content_scripts": [
+        {
+            "matches": [
+                "https://www.facebook.com/sharer.php?u=https%3A%2F%2Fzigi.be*"
+            ],
+            "js": [
+                "scripts/facebook-share.js"
+            ]
+        }
+    ],
 	"permissions": [
 		"storage",
 		"tabs",
 		"activeTab",
 		"scripting"
 	],
+	"options_page": "options.html",
 	"host_permissions": [
 		"*://*.ziggi.be/",
         "*://ziggi.be/",
