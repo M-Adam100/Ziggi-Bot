@@ -3,6 +3,7 @@ chrome.runtime.onInstalled.addListener(async () => {
 })
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+  console.log(tab);
   if (changeInfo.status === 'complete') {
     if (
       tab.url.includes('https://www.facebook.com/sharer.php') &&

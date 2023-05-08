@@ -1,13 +1,19 @@
 console.log('Sharing LinkedIn Post')
-
 ;(async () => {
+  setTimeout(async () => {
+    console.log('Some Error Occured!')
+    await chrome.storage.local.set({
+      sharingLinkedInStatus: false,
+    })
+    window.close()
+  }, 10000)
 
   function urldecode(str) {
     return decodeURIComponent((str + '').replace(/\+/g, '%20'))
   }
-  
+
   const setDetailsCache = async (url) => {
-    const { posts } = await chrome.storage.local.get('["posts"]');
+    const { posts } = await chrome.storage.local.get('posts')
     const post = {
       postUrl: url,
       date: new Date().getTime() + 12 * 60 * 60 * 1000,
@@ -15,12 +21,12 @@ console.log('Sharing LinkedIn Post')
     }
     if (posts && posts.length) {
       const allPosts = [...posts, post]
-      chrome.storage.local.set({
+      await chrome.storage.local.set({
         posts: allPosts,
       })
     } else {
       const allPosts = [post]
-      chrome.storage.local.set({
+      await chrome.storage.local.set({
         posts: allPosts,
       })
     }
@@ -31,28 +37,31 @@ console.log('Sharing LinkedIn Post')
     return
   }
   const interval = setInterval(() => {
-    const ShareDiv = document.querySelector('button');
+    const ShareDiv = document.querySelector('button')
 
     if (ShareDiv) {
-      clearInterval(interval);
-      ShareDiv.click();
+      clearInterval(interval)
+      ShareDiv.click()
 
-      const buttonInterval = setInterval(() => {
+      const buttonInterval = setInterval(async () => {
         const shareButton = document
-        .querySelector('.share-box_actions')
-        .querySelector('button');
-        const url = urldecode(window.location.href);
-        setDetailsCache(url);
-      if (shareButton) {
-        clearInterval(buttonInterval);
-        chrome.runtime.sendMessage({
-          message: 'CLOSE_WINDOW',
-        })
-        shareButton.click()
-        console.log('Post Shared')
-      }
+          .querySelector('.share-box_actions')
+          .querySelector('button')
+        const url = urldecode(window.location.href)
+        await setDetailsCache(url)
+        if (shareButton) {
+          clearInterval(buttonInterval)
+          shareButton.click()
+          await chrome.storage.local.set({
+            sharingLinkedInStatus: false,
+          })
+
+          setTimeout(() => {
+            window.close()
+          }, 2500)
+          console.log('Post Shared')
+        }
       }, 1000)
-    
     }
   }, 300)
-})();
+})()

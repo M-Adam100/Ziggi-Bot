@@ -1,47 +1,63 @@
 document.querySelector('button#launch-bot').addEventListener('click', () => {
+  const query = { active: true, currentWindow: true }
+  chrome.tabs.query(query, (tabs) => {
+    const currentTab = tabs[0]
+    chrome.storage.local.set({
+      tabId: currentTab.id,
+    })
 
-    const query = { active: true, currentWindow: true };
-    chrome.tabs.query(query, (tabs) => {
-        const currentTab = tabs[0];
-        chrome.storage.local.set({
-          tabId: currentTab.id
-        })
-        chrome.scripting.executeScript(
-            {
-              target: {tabId: currentTab.id},
-              files: ['scripts/bot-script.js'],
-            },
-            () => { console.log("RAN-Category-Pages") });
-    });
+    chrome.scripting
+      .insertCSS({
+        target: { tabId: currentTab.id },
+        files: ['theme/styles.css'],
+      })
+      .then(() => console.log('CSS injected'))
+
+    chrome.scripting.executeScript(
+      {
+        target: { tabId: currentTab.id },
+        files: ['scripts/bot-script.js'],
+      },
+      () => {
+        console.log('RAN-Category-Pages')
+      },
+    )
+  })
 })
 
-document.getElementById("openOptions").addEventListener("click", () => {
-	chrome.runtime.openOptionsPage();
-
+document.getElementById('openOptions').addEventListener('click', () => {
+  chrome.runtime.openOptionsPage()
 })
 
-chrome.storage.local.get(['facebookStatus', 'twitterStatus', 'linkedInStatus', 'pinterestStatus', 'vkStatus'], (data) => {
-  document.querySelector('input#facebook').checked = data?.facebookStatus;
-  document.querySelector('input#twitter').checked = data?.twitterStatus;
-  document.querySelector('input#pinterest').checked = data?.pinterestStatus;
-  document.querySelector('input#linkedIn').checked = data?.linkedInStatus;
-  document.querySelector('input#vk').checked = data?.vkStatus;
-
-})
+chrome.storage.local.get(
+  [
+    'facebookStatus',
+    'twitterStatus',
+    'linkedInStatus',
+    'pinterestStatus',
+    'vkStatus',
+  ],
+  (data) => {
+    document.querySelector('input#facebook').checked = data?.facebookStatus
+    document.querySelector('input#twitter').checked = data?.twitterStatus
+    document.querySelector('input#pinterest').checked = data?.pinterestStatus
+    document.querySelector('input#linkedIn').checked = data?.linkedInStatus
+    document.querySelector('input#vk').checked = data?.vkStatus
+  },
+)
 
 document.querySelector('input#facebook').addEventListener('change', (e) => {
-  chrome.storage.local.set({facebookStatus: e.target.checked})
+  chrome.storage.local.set({ facebookStatus: e.target.checked })
 })
 document.querySelector('input#twitter').addEventListener('change', (e) => {
-  chrome.storage.local.set({twitterStatus: e.target.checked})
+  chrome.storage.local.set({ twitterStatus: e.target.checked })
 })
 document.querySelector('input#linkedIn').addEventListener('change', (e) => {
-  chrome.storage.local.set({linkedInStatus: e.target.checked})
+  chrome.storage.local.set({ linkedInStatus: e.target.checked })
 })
 document.querySelector('input#pinterest').addEventListener('change', (e) => {
-  chrome.storage.local.set({pinterestStatus: e.target.checked})
+  chrome.storage.local.set({ pinterestStatus: e.target.checked })
 })
 document.querySelector('input#vk').addEventListener('change', (e) => {
-  chrome.storage.local.set({vkStatus: e.target.checked})
+  chrome.storage.local.set({ vkStatus: e.target.checked })
 })
-

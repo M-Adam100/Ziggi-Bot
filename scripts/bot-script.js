@@ -1,6 +1,21 @@
 console.log('Launching Bot')
-
 ;(async () => {
+  const loader = document.createElement('div')
+  loader.id = 'nihao-loader';
+  loader.className = 'nihao-loader';
+
+  if (!document.querySelector('#nihao-loader')) {
+    document.querySelector('body').appendChild(loader)
+  }
+
+  await chrome.storage.local.set({
+    sharingFacebookStatus: false,
+    sharingTwitterStatus: false,
+    sharingVkStatus: false,
+    sharingLinkedInStatus: false,
+    sharingPinterestStatus: false,
+  })
+
   if (!window.location.href.includes('https://zigi.be/')) {
     alert('Bot will only work on Zigi.be :)')
     return
@@ -28,12 +43,34 @@ console.log('Launching Bot')
       ...document.querySelector('.js_posts_stream')?.querySelector('ul')
         .children,
     ].filter((item) => !item.getAttribute('shared'))[0]
-    if (post) {
-      clearInterval(postInterval)
+    const {
+      sharingFacebookStatus,
+      sharingTwitterStatus,
+      sharingLinkedInStatus,
+      sharingVkStatus,
+      sharingPinterestStatus,
+    } = await chrome.storage.local.get([
+      'sharingFacebookStatus',
+      'sharingTwitterStatus',
+      'sharingLinkedInStatus',
+      'sharingVkStatus',
+      'sharingPinterestStatus',
+    ])
+    if (
+      post &&
+      !sharingFacebookStatus &&
+      !sharingTwitterStatus &&
+      !sharingLinkedInStatus &&
+      !sharingVkStatus &&
+      !sharingPinterestStatus
+    ) {
       post.setAttribute('shared', 'true')
 
       if (CS.facebookStatus) {
         console.log('Sharing on Facebook')
+        chrome.storage.local.set({
+          sharingFacebookStatus: true,
+        })
         const facebookUrl = post.querySelector('a.btn-facebook')
         if (CS.posts && CS.posts.length) {
           const found = CS.posts.find((p) => p.postUrl === facebookUrl.href)
@@ -48,6 +85,9 @@ console.log('Launching Bot')
 
       if (CS.twitterStatus) {
         console.log('Sharing on Twitter')
+        chrome.storage.local.set({
+          sharingTwitterStatus: true,
+        })
         const twitterUrl = post.querySelector('a.btn-twitter')
         if (CS.posts && CS.posts.length) {
           const found = CS.posts.find((p) => p.postUrl === twitterUrl.href)
@@ -55,43 +95,51 @@ console.log('Launching Bot')
             return
           }
         }
-        twitterUrl.click();
-        await sleep(2000);
+        twitterUrl.click()
+        await sleep(2000)
         setRerunVar('twitter')
       }
 
       if (CS.vkStatus) {
         console.log('Sharing on VK')
-        const VkUrl = post.querySelector('a.btn-vk');
+        chrome.storage.local.set({
+          sharingVkStatus: true,
+        })
+        const VkUrl = post.querySelector('a.btn-vk')
         if (CS.posts && CS.posts.length) {
           const found = CS.posts.find((p) => p.postUrl === VkUrl.href)
           if (found && found.vk == true) {
-            return;
+            return
           }
         }
-        VkUrl.click();
-        await sleep(2000);
-        setRerunVar('vk');
+        VkUrl.click()
+        await sleep(2000)
+        setRerunVar('vk')
       }
 
       if (CS.linkedInStatus) {
         console.log('Sharing on LinkedIn')
-        const linkedIn = post.querySelector('a.btn-linkedin');
-        console.log(linkedIn);
+        const linkedIn = post.querySelector('a.btn-linkedin')
+        chrome.storage.local.set({
+          sharingLinkedInStatus: true,
+        })
 
         if (CS.posts && CS.posts.length) {
           const found = CS.posts.find((p) => p.postUrl === linkedIn.href)
           if (found && found.linkedIn == true) {
-            return;
+            return
           }
         }
-        linkedIn.click();
+        linkedIn.click()
         await sleep(2000)
         setRerunVar('linkedin')
       }
 
       if (CS.pinterestStatus) {
         console.log('Sharing on Pinterest')
+        chrome.storage.local.set({
+          sharingPinterestStatus: true,
+        })
         const pinterestUrl = post.querySelector('a.btn-pinterest')
         if (CS.posts && CS.posts.length) {
           const found = CS.posts.find((p) => p.postUrl === pinterestUrl.href)
@@ -99,13 +147,13 @@ console.log('Launching Bot')
             return
           }
         }
-        pinterestUrl.click();
+        pinterestUrl.click()
         await sleep(2000)
         setRerunVar('linkedIn')
       }
 
       await sleep(2000)
-    } else {
+    } else if (!post) {
       window.scrollTo({
         left: 0,
         top: document.body.scrollHeight,
